@@ -11,6 +11,8 @@ const app = express();
  * PUT == Alterar
  * DELETE == Deletar
  * PATCH == Alteração Específica
+ * 
+ * use https://insomnia.rest/download/core/? for test api resources
  */
 app.get("/", (request, response) =>{
     return response.send("Use default requests");
