@@ -1,0 +1,84 @@
+Para o Linux iremos utilizar o **[NodeSource](https://github.com/nodesource/distributions/blob/master/README.md)**, basta seguir esses passos:
+
+- Verifique se você possui o **[curl](https://curl.haxx.se/)** instalado rodando no terminal o comando:
+
+```bash
+curl --version
+```
+
+Caso ele retorne a versão, pode pular para o próximo passo. Caso não, basta rodar o comando:
+
+```bash
+sudo apt install curl
+```
+
+- Com o **curl** instalado, execute o comando de instalação da versão LTS mais recente disponível:
+    - Ubuntu
+
+    ```bash
+    curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    ```
+
+    - Debian (como root)
+
+    ```json
+    curl -sL https://deb.nodesource.com/setup_lts.x | bash -
+    apt-get install -y nodejs
+    ```
+
+- Feche o terminal e abra novamente para as alterações fazerem efeito.
+
+- Por fim, execute os seguintes comandos no terminal:
+    node -v
+    npm -v
+
+
+Caso retorne as versões do Node e npm, sua instalação foi um sucesso.
+
+
+
+Para instalar o Yarn 1 no Linux vamos começar configurando o repositório do **Yarn** executando:
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+
+Instale utilizando o seguinte comando:
+    sudo apt update && sudo apt install --no-install-recommends yarn
+
+
+Adicione ao arquivo `~/.bashrc` (ou `~/.zshrc` caso você utilize o shell zsh) a seguinte linha: 
+    export PATH="$PATH:`yarn global bin`"
+
+
+Feche e abra o terminal novamente, em seguida rode o comando:
+    yarn --version
+
+
+Caso retorne a versão do Yarn (acima de 1.0, abaixo de 2.0), a instalação ocorreu com sucesso.
+
+
+Adicionar o express ao projeto 
+    yarn add express
+
+Adicionar a dependencia exclusiva para desenvolvimento
+    yarn add @types/express -D 
+
+Alterar tsconfig.json mudando 
+    "strict" para false
+
+Incluir no package.json o trecho de código abaixo para fazer o servidor rodar
+
+    "scripts":{
+        "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
+    },
+
+
+Adicionar o TypeScript apenas para desenvolvimento
+    yarn add typescript -D
+
+Adicionar o TS node apenas para desenvolvimento
+    yarn add ts-node-dev -D
+
+Iniciar o servidor
+    yarn dev
