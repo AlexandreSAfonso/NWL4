@@ -99,6 +99,7 @@ Nesse projeto o typeorm foi utilizando
     "type": "sqlite",
     "database": "./src/database/database.sqlite",
     "migrations": ["./src/database/migrations/**.ts"], //diretório onde rodar os Migradions
+    "entities": [".src/models/**.ts"],
     "cli":{
         "migrationsDir": "./src/database/database/migrations" //diretório para criar os Migradions
     }
@@ -135,3 +136,19 @@ Para testar o SQLite, existe uma extensão sqlite ou um app chamado https://www.
 
 Criando a estrutura de Controllers
     Criar a pasta controllers dentro de src
+    Criar o controller o arquivo UserController.ts
+    Reformular o server.ts, para utilizar o controller
+
+Criar o arquivo router.ts dentro de src
+
+Criando a pasta models dentro de src
+    Criar o arquivo User.ts dentro da pasta
+
+Ajustar o tsconfig.json nos parâmetros
+    "strictPropertyInitialization": false
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true, 
+
+Adicionar a biblioteca uuid
+    yarn add uuid
+    yarn add @types/uuid
