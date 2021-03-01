@@ -37,4 +37,5 @@ export class CreateUsers1614207063814 implements MigrationInterface {
 }
 /**
  * para rodar as migrations, use no console: "yarn typeorm migration:run"
+ * para fazer rollback da ultima migration que ele rodou, use no console: "yarn typeorm migration:revert"
 */

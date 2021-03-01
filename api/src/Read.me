@@ -98,15 +98,40 @@ Nesse projeto o typeorm foi utilizando
 {
     "type": "sqlite",
     "database": "./src/database/database.sqlite",
+    "migrations": ["./src/database/migrations/**.ts"], //diretório onde rodar os Migradions
     "cli":{
-        "migrationsDir": "./src/database/database/migrations"
+        "migrationsDir": "./src/database/database/migrations" //diretório para criar os Migradions
     }
 }
 
-Criar uma entrada no arquivo package.json logo abaixo de "dev"
+Criar uma entrada no arquivo package.json em "sripts, logo abaixo de "dev"
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
 
 No arquivo server.ts, colocar os imports 
     import 'reflect-metadata' //esse tem que ficar na primeira linha
     import "./database";
 
+
+Criar a pasta databese dentro de src
+Criar a pasta migration dentro de database
+Dentro da pasta database, criar o arquivo index.ts com o conteúdo
+    import { createConnection } from 'typeorm'
+
+    createConnection();
+
+Rode a aplicação para ver se o arquivo database.sqlite é criado sem erros
+
+
+Criar o primeiro migration, terminal, digite yarn typeorm migration:create -n NomeDoMigration, ex:
+    yarn typeorm migration:create -n CreateUsers
+
+Verifique a estrutura de tabelas a ser criada, e monte o migration UP, conforme necessário.
+Para o rollback crie a estrutura down no mesmo arquivo.
+ * para rodar as migrations, use no console: "yarn typeorm migration:run"
+ * para fazer rollback da ultima migration que ele rodou, use no console: "yarn typeorm migration:revert"
+
+Para testar o SQLite, existe uma extensão sqlite ou um app chamado https://www.beekeeperstudio.io/
+
+
+Criando a estrutura de Controllers
+    Criar a pasta controllers dentro de src
