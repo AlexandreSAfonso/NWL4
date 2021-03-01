@@ -90,3 +90,23 @@ Formas de interagir com o Banco de dados
 https://node-postgres.com/
 http://knexjs.org/
 https://typeorm.io/
+
+Nesse projeto o typeorm foi utilizando
+ criar dentro de src a pasta database
+ criar dentro de src/database a pasta migrations
+ criar na raiz o arquivo ormconfig.json e incluir dentro o código
+{
+    "type": "sqlite",
+    "database": "./src/database/database.sqlite",
+    "cli":{
+        "migrationsDir": "./src/database/database/migrations"
+    }
+}
+
+Criar uma entrada no arquivo package.json logo abaixo de "dev"
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+
+No arquivo server.ts, colocar os imports 
+    import 'reflect-metadata' //esse tem que ficar na primeira linha
+    import "./database";
+
